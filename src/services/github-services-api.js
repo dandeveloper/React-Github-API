@@ -23,3 +23,9 @@ export function fetchRepo(fullName) {
     headers,
   });
 }
+
+export function fetchRepoCommits(fullName) {
+  return axios.get(`https://api.github.com/repos/${fullName}/commits?per_page=20&page=1`, {
+    headers,
+  });
+}
