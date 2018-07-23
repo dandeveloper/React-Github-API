@@ -34,7 +34,20 @@ export function reposFetchData(username) {
 
               return response;
           })
-          .then((response) => response.data)
+          .then((response) => {
+              const repos = response.data.sort((a, b) => {
+                const starsA = a.stargazers_count;
+                const starsB = b.stargazers_count;
+                let comparison = 0;
+                if (starsA < starsB) {
+                  comparison = 1;
+                } else if (starsA > starsB) {
+                  comparison = -1;
+                }
+                return comparison;
+              });
+              return repos;
+            })
           .then((repos) => dispatch(reposFetchDataSuccess(repos)))
           .catch(() => dispatch(reposHasErrored(true)));
   };
