@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './ReposList.css';
 import { connect } from 'react-redux';
 import { reposFetchData } from '../../actions/repos';
+import { Link } from 'react-router-dom';
 
 class ReposList extends Component {
 
@@ -18,7 +19,7 @@ class ReposList extends Component {
           {
             this.props.repos.map((repo) => (
               <li key={repo.id}>
-                { repo.full_name }
+                <Link to={repo.name}>{ repo.full_name }</Link>
               </li>
             ))
           }
