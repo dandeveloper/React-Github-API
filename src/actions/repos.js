@@ -1,16 +1,16 @@
 import { fetchUserRepos } from '../services/github-services-api';
 
-export function reposHasErrored(bool) {
+export function HasErrored(bool) {
   return {
-      type: 'REPOS_HAS_ERRORED',
-      hasErrored: bool
+      type: 'HAS_ERRORED',
+      repoHasErrored: bool
   };
 }
 
 export function reposIsLoading(bool) {
   return {
-      type: 'REPOS_IS_LOADING',
-      isLoading: bool
+      type: 'IS_LOADING',
+      reposIsLoading: bool
   };
 }
 
@@ -49,6 +49,6 @@ export function reposFetchData(username) {
               return repos;
             })
           .then((repos) => dispatch(reposFetchDataSuccess(repos)))
-          .catch(() => dispatch(reposHasErrored(true)));
+          .catch(() => dispatch(HasErrored(true)));
   };
 }
