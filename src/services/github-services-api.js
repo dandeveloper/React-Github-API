@@ -14,7 +14,7 @@ export function fetchUser(username) {
 
 export function fetchUserRepos(username) {
   return axios.get(`https://api.github.com/users/${username}/repos`, {
-    headers,
+    headers
   });
 }
 
@@ -24,8 +24,8 @@ export function fetchRepo(fullName) {
   });
 }
 
-export function fetchRepoCommits(fullName) {
-  return axios.get(`https://api.github.com/repos/${fullName}/commits?per_page=20&page=1`, {
+export function fetchRepoCommits(fullName, page) {
+  return axios.get(`https://api.github.com/repos/${fullName}/commits?per_page=20&page=${page}`, {
     headers,
   });
 }
