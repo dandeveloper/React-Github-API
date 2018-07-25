@@ -70,3 +70,7 @@
 .btn-carregar-mais:hover {
     background: #f0f0f0;
 }
+
+.repo-details__commits {
+    margin-bottom: 40px;
+}
