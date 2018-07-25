@@ -13,10 +13,10 @@ class App extends Component {
       <div className="app">
         <Header />
         <BrowserRouter>
-          <ReposList />
+          <Route path="/" component={ ReposList } />
         </BrowserRouter>
         <BrowserRouter>
-            <Route path="/:repo" component={RepoDetails} />
+            <Route path="/:repo" exact component={ RepoDetails } />
         </BrowserRouter>
       </div>
     );
