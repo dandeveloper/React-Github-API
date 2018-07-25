@@ -22,7 +22,6 @@ class RepoDetails extends Component {
 
   handleLoadMore() {
     const urlParams = window.location.pathname;
-    console.log(this.props.pageControl);
     let currentPage = this.props.pages + 1;
     this.props.pageControl(currentPage);
     this.props.repoCommitsFetchData(`globocom${urlParams}`, currentPage);
@@ -31,29 +30,34 @@ class RepoDetails extends Component {
   render() {
     return (
       <div className="repo-details">
-        <h1 className="repo-details__name">{ this.props.full_name }</h1>
-        <p className="repo-details__description">{ this.props.description }</p>
-        <div className="repo-details__info">
-          <span><i className="fa fa-star"></i> Estrelas { this.props.stargazers_count }</span>
-          <span><i className="fa fa-code-fork"></i> Forks { this.props.forks_count }</span>
+        <div style={{ display: this.props.full_name ? 'inline-block' : 'none'}}  className="repo-details__data">
+          <h1 className="repo-details__name">{ this.props.full_name }</h1>
+          <p className="repo-details__description">{ this.props.description }</p>
+          <div className="repo-details__info">
+            <span><i className="fa fa-star"></i> Estrelas { this.props.stargazers_count }</span>
+            <span><i className="fa fa-code-fork"></i> Forks { this.props.forks_count }</span>
+          </div>
+          <h2 className="repo-details__list-title">Commits <i className="fa fa-github-alt" aria-hidden="true"></i></h2>
+          <ul className="repo-details__commits">
+          {
+              this.props.repoCommits.map((commit) => (
+                <li className="repo-details__commits-item" key={commit.sha}>
+                  <a href={commit.html_url} target="_blank">
+                    <div className="commit">
+                      <span>{commit.commit.message}</span>
+                    </div>
+                  </a>
+                </li>
+              ))
+          }
+          </ul>
+          <button className="btn-carregar-mais"
+          style={{ display: this.props.loadMoreVisibility ? 'block' : 'none' }}
+          onClick={ this.handleLoadMore }>Carregar Mais</button>
         </div>
-        <h2 className="repo-details__list-title">Commits <i className="fa fa-github-alt" aria-hidden="true"></i></h2>
-        <ul className="repo-details__commits">
-        {
-            this.props.repoCommits.map((commit) => (
-              <li className="repo-details__commits-item" key={commit.sha}>
-                <a href={commit.html_url} target="_blank">
-                  <div className="commit">
-                    <span>{commit.commit.message}</span>
-                  </div>
-                </a>
-              </li>
-            ))
-        }
-        </ul>
-        <button className="btn-carregar-mais"
-        style={{ display: this.props.loadMoreVisibility ? 'block' : 'none' }}
-        onClick={ this.handleLoadMore }>Carregar Mais</button>
+        <div style={{ display: this.props.full_name ? 'none' : 'inline-block'}} className="repo-details__init">
+          <h1 className="repo-details__name">Repositórios Github da Globo.com</h1>
+        </div>
       </div>
     );
   }

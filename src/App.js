@@ -16,7 +16,10 @@ class App extends Component {
           <Route path="/" component={ ReposList } />
         </BrowserRouter>
         <BrowserRouter>
-            <Route path="/:repo" exact component={ RepoDetails } />
+          <Route path="/" exact component={ RepoDetails } />
+        </BrowserRouter>
+        <BrowserRouter>
+            <Route path="/:repo" component={ RepoDetails } />
         </BrowserRouter>
       </div>
     );
