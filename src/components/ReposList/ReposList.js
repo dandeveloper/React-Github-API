@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { reposFetchData } from '../../actions/repos';
 import { repoDetailsFetchData } from '../../actions/repoDetails';
 import { repoCommitsFetchData } from '../../actions/repoCommits';
+import { pageControl } from '../../actions/repoCommits';
 
 class ReposList extends Component {
 
@@ -13,6 +14,7 @@ class ReposList extends Component {
 
   handleChangeRepo(name) {
     this.props.history.push(name);
+    this.props.pageControl(1);
     this.props.repoDetailsFetchData(`globocom/${name}`)
     this.props.repoCommitsFetchData(`globocom/${name}`, 1);
   }
@@ -49,7 +51,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
       fetchData: (fullName) => dispatch(reposFetchData(fullName)),
       repoDetailsFetchData: (fullName) => dispatch(repoDetailsFetchData(fullName)),
-      repoCommitsFetchData: (fullName) => dispatch(repoCommitsFetchData(fullName)),
+      repoCommitsFetchData: (fullName, page) => dispatch(repoCommitsFetchData(fullName, page)),
+      pageControl: (page) => dispatch(pageControl(page)),
   };
 }
 
