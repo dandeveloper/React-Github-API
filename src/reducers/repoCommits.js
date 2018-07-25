@@ -28,6 +28,16 @@ export function loadMoreVisibility(state = true, action) {
     }
 }
 
+export function pageControl(state = 1, action) {
+    switch (action.type) {
+        case 'PAGE_CONTROL':
+            return action.page;
+
+        default:
+            return state;
+    }
+}
+
 export function repoCommits(state = [], action) {
     switch (action.type) {
         case 'REPO_COMMITS_FETCH_DATA_SUCCESS':
