@@ -23,6 +23,13 @@ export function loadMoreVisibility(bool) {
     };
 }
 
+export function pageControl(page) {
+    console.log(page);
+    return {
+        type: 'PAGE_CONTROL',
+        page
+    };
+}
 export function repoCommitsFetchDataSuccess(repoCommits) {
     return {
         type: 'REPO_COMMITS_FETCH_DATA_SUCCESS',
@@ -37,7 +44,7 @@ export function addCommitsFetchDataSuccess(repoCommits) {
 }
 
 export function repoCommitsFetchData(fullName, page) {
-    return (dispatch) => {
+    return (dispatch, getState) => {
         dispatch(repoCommitsIsLoading(true));
         fetchRepoCommits(fullName, page)
             .then((response) => {
@@ -54,11 +61,16 @@ export function repoCommitsFetchData(fullName, page) {
                 if (page === 1) {
                     if (repoCommits.length < 20) {
                         dispatch(loadMoreVisibility(false))
+                    } else {
+                        dispatch(loadMoreVisibility(true))
                     }
                     dispatch(repoCommitsFetchDataSuccess(repoCommits))
                 } else {
                     if (repoCommits.length < 20) {
                         dispatch(loadMoreVisibility(false))
+                        dispatch(pageControl(1))
+                    } else {
+                        dispatch(loadMoreVisibility(true))
                     }
                     dispatch(addCommitsFetchDataSuccess(repoCommits))
                 }
