@@ -1,0 +1,72 @@
+.repo-details {
+    display: inline-block;
+    vertical-align: top;
+    width: 70%;
+    padding-top: 60px;
+}
+
+.repo-details__name {
+    font-size: 42px;
+    font-weight: 600;
+    color: #0070c9;
+    padding-left: 5%;
+}
+
+.repo-details__description {
+    font-size: 19px;
+    line-height: 24px;
+    margin-bottom: 15px;
+    padding-left: 5%;
+    max-width: 80%;
+}
+.repo-details__info {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+    padding-left: 5%;
+}
+.repo-details__info span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+    font-size: 18px;
+}
+.repo-details__list-title {
+    font-size: 32px;
+    padding-left: 5%;
+    margin-bottom: 20px;
+}
+.repo-details__commits-item a {
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 20px 10px 0;
+    color: #24292e;
+    display: block;
+    padding-left: 5%;
+    background: #fff;
+    border: 1px solid #f0f0f0;
+}
+.repo-details__commits-item:nth-of-type(even) a {
+    background: #f0f0f0;
+}
+.repo-details__commits-item a:hover {
+    background: #2196f3;
+    color: #fff;
+}
+.btn-carregar-mais {
+    border: none;
+    background: #fff;
+    width: 180px;
+    height: 40px;
+    border: 1px solid #000;
+    display: block;
+    margin: 30px auto 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-carregar-mais:hover {
+    background: #f0f0f0;
+}

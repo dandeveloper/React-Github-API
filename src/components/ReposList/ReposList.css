@@ -1,0 +1,44 @@
+.repos {
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    min-width: 425px;
+    height: 100%;
+    overflow-y: scroll;
+    position: relative;
+}
+.repos-list {
+    background-color: #2196f3;
+    padding-top: 60px;
+    list-style: none;
+    padding-left: 0;
+}
+.repos-list .repo-list__link {
+    color: #fff;
+    background: transparent;
+    border: none;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 20px;
+    display: block;
+    width: 100%;
+    text-align: left;
+    border-top: 1px solid #fff;
+    cursor: pointer;
+}
+.repos-list .repo-list__link:hover {
+    color: #000;
+    background: #fff;
+    text-decoration: none;
+}
+.repos-list .repo-stars {
+    float: right;
+}
+.repos-list a:active {
+    color: #fff;
+    text-decoration: none;
+}
+.repos-list a:visited {
+    color: #fff;
+    text-decoration: none;
+}
