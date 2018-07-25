@@ -19,7 +19,6 @@ export function repoDetailsIsLoading(state = false, action) {
 }
 
 export function repoDetails(state = {}, action) {
-    console.log('state', state);
     switch (action.type) {
         case 'REPO_DETAILS_FETCH_DATA_SUCCESS':
             return action.repoDetails;
