@@ -3,6 +3,7 @@ import './RepoDetails.css';
 import { connect } from 'react-redux';
 import { repoDetailsFetchData } from '../../actions/repoDetails';
 import { repoCommitsFetchData } from '../../actions/repoCommits';
+import { pageControl } from '../../actions/repoCommits';
 
 class RepoDetails extends Component {
 
@@ -16,15 +17,15 @@ class RepoDetails extends Component {
 
     this.props.repoDetailsFetchData(`globocom/${urlParams}`);
     this.props.repoCommitsFetchData(`globocom/${urlParams}`, 1);
-    console.log(this.props.repoCommits);
 
   }
 
   handleLoadMore() {
     const urlParams = window.location.pathname;
-    this.page += 1;
-    this.props.repoCommitsFetchData(`globocom${urlParams}`, this.page);
-    console.log(this.props.loadMoreVisibility);
+    console.log(this.props.pageControl);
+    let currentPage = this.props.pages + 1;
+    this.props.pageControl(currentPage);
+    this.props.repoCommitsFetchData(`globocom${urlParams}`, currentPage);
   }
 
   render() {
@@ -69,7 +70,7 @@ const mapStateToProps = (state) => {
       isLoading: state.repoDetailsIsLoading,
       repoCommits: state.repoCommits,
       loadMoreVisibility: state.loadMoreVisibility,
-      commitPages: state.commitPages,
+      pages: state.pageControl,
   };
 }
 
@@ -77,6 +78,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     repoDetailsFetchData: (fullName) => dispatch(repoDetailsFetchData(fullName)),
     repoCommitsFetchData: (fullName, page) => dispatch(repoCommitsFetchData(fullName, page)),
+    pageControl: (page) => dispatch(pageControl(page)),
   };
 }
 
